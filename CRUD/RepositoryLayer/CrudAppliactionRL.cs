@@ -1,8 +1,10 @@
 ﻿using CRUD.CommonLayer.Models;
 using CRUD.CommonUtility;
 using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,11 +15,13 @@ namespace CRUD.RepositoryLayer
     {
         public readonly IConfiguration _configuration;
         public readonly SqlConnection _sqlConnection;
+        public readonly MySqlConnection _mySqlConnection;
         int ConnectionTimeOut = 180;
         public CrudAppliactionRL(IConfiguration configuration)
         {
             _configuration = configuration;
-            _sqlConnection = new SqlConnection( _configuration["ConnectionStrings:SqlServerDBConnection"]);
+            _sqlConnection = new SqlConnection(_configuration["ConnectionStrings:SqlServerDBConnection"]);
+            _mySqlConnection = new MySqlConnection(_configuration["ConnectionStrings:MySqlDBConnection"]);
         }
 
         public async Task<CreateInformationResponse> CreateInformation(CreateInformationRequest request)
@@ -27,17 +31,20 @@ namespace CRUD.RepositoryLayer
             resposne.Message = "Successful";
             try
             {
-                if(_sqlConnection != null)
+                if (_mySqlConnection != null)
+                //if(_sqlConnection != null)
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.CreateInformationQuery, _sqlConnection))
+                    using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.CreateInformationQuery, _mySqlConnection))
+                    //using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.CreateInformationQuery, _sqlConnection))
                     {
                         sqlCommand.CommandType = System.Data.CommandType.Text;
                         sqlCommand.CommandTimeout = ConnectionTimeOut;
                         sqlCommand.Parameters.AddWithValue("@UserName", request.UserName);
                         sqlCommand.Parameters.AddWithValue("@Age", request.Age);
-                        await _sqlConnection.OpenAsync();
+                        await _mySqlConnection.OpenAsync();
+                        //await _sqlConnection.OpenAsync();
                         int Status = await sqlCommand.ExecuteNonQueryAsync();
-                        if(Status <= 0)
+                        if (Status <= 0)
                         {
                             resposne.IsSuccess = false;
                             resposne.Message = "CreateInformation Not Executed";
@@ -45,15 +52,18 @@ namespace CRUD.RepositoryLayer
                     }
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 resposne.IsSuccess = false;
                 resposne.Message = "Exception Message : " + ex.Message;
             }
             finally
             {
-                await _sqlConnection.CloseAsync();
-                await _sqlConnection.DisposeAsync();
+                await _mySqlConnection.CloseAsync();
+                await _mySqlConnection.DisposeAsync();
+                //await _sqlConnection.CloseAsync();
+                //await _sqlConnection.DisposeAsync();
             }
 
             return resposne;
@@ -67,12 +77,15 @@ namespace CRUD.RepositoryLayer
             response.Message = "Successful";
             try
             {
-                using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.ReadInformation,_sqlConnection))
+                using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.ReadInformation, _mySqlConnection))
+                //using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.ReadInformation,_sqlConnection))
                 {
                     sqlCommand.CommandType = System.Data.CommandType.Text;
                     sqlCommand.CommandTimeout = ConnectionTimeOut;
-                    await _sqlConnection.OpenAsync();
-                    using(SqlDataReader _sqlDataReader = await sqlCommand.ExecuteReaderAsync())
+                    await _mySqlConnection.OpenAsync();
+                    //await _sqlConnection.OpenAsync();
+                    using (DbDataReader _sqlDataReader = await sqlCommand.ExecuteReaderAsync())
+                    //using(SqlDataReader _sqlDataReader = await sqlCommand.ExecuteReaderAsync())
                     {
                         if (_sqlDataReader.HasRows)
                         {
@@ -91,15 +104,18 @@ namespace CRUD.RepositoryLayer
                         }
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 response.IsSuccess = false;
                 response.Message = "Exception Message : " + ex.Message;
             }
             finally
             {
-                await _sqlConnection.CloseAsync();
-                await _sqlConnection.DisposeAsync();
+                await _mySqlConnection.CloseAsync();
+                await _mySqlConnection.DisposeAsync();
+                //await _sqlConnection.CloseAsync();
+                //await _sqlConnection.DisposeAsync();
             }
 
             return response;
@@ -114,14 +130,16 @@ namespace CRUD.RepositoryLayer
             {
                 if (_sqlConnection != null)
                 {
-                    using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.UpdateInformation, _sqlConnection))
+                    using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.UpdateInformation, _mySqlConnection))
+                    //using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.UpdateInformation, _sqlConnection))
                     {
                         sqlCommand.CommandType = System.Data.CommandType.Text;
                         sqlCommand.CommandTimeout = ConnectionTimeOut;
                         sqlCommand.Parameters.AddWithValue("@UserId", request.UserId);
                         sqlCommand.Parameters.AddWithValue("@UserName", request.UserName);
                         sqlCommand.Parameters.AddWithValue("@Age", request.Age);
-                        await _sqlConnection.OpenAsync();
+                        await _mySqlConnection.OpenAsync();
+                        //await _sqlConnection.OpenAsync();
                         int Status = await sqlCommand.ExecuteNonQueryAsync();
                         if (Status <= 0)
                         {
@@ -139,8 +157,10 @@ namespace CRUD.RepositoryLayer
             }
             finally
             {
-                await _sqlConnection.CloseAsync();
-                await _sqlConnection.DisposeAsync();
+                await _mySqlConnection.CloseAsync();
+                await _mySqlConnection.DisposeAsync();
+                //await _sqlConnection.CloseAsync();
+                //await _sqlConnection.DisposeAsync();
             }
 
             return resposne;
@@ -156,13 +176,16 @@ namespace CRUD.RepositoryLayer
                 if (_sqlConnection != null)
                 {
                     string StoreProcedure = "SP_DeleteInformation";
-                    using (SqlCommand sqlCommand = new SqlCommand(StoreProcedure, _sqlConnection))
+                    using (MySqlCommand sqlCommand = new MySqlCommand(StoreProcedure, _mySqlConnection))
+                    //using (SqlCommand sqlCommand = new SqlCommand(StoreProcedure, _sqlConnection))
                     {
                         sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                         sqlCommand.CommandTimeout = ConnectionTimeOut;
-                        sqlCommand.Parameters.AddWithValue("@UserId", request.UserId);
-                        await _sqlConnection.OpenAsync();
-                        using (SqlDataReader _sqlDataReader = await sqlCommand.ExecuteReaderAsync())
+                        sqlCommand.Parameters.AddWithValue("?UserId", request.UserId);
+                        //sqlCommand.Parameters.AddWithValue("@UserId", request.UserId);
+                        await _mySqlConnection.OpenAsync();
+                        //await _sqlConnection.OpenAsync();
+                        using (DbDataReader _sqlDataReader = await sqlCommand.ExecuteReaderAsync())
                         {
                             if (_sqlDataReader.HasRows)
                             {
@@ -188,8 +211,10 @@ namespace CRUD.RepositoryLayer
             }
             finally
             {
-                await _sqlConnection.CloseAsync();
-                await _sqlConnection.DisposeAsync();
+                await _mySqlConnection.CloseAsync();
+                await _mySqlConnection.DisposeAsync();
+                //await _sqlConnection.CloseAsync();
+                //await _sqlConnection.DisposeAsync();
             }
 
             return resposne;
