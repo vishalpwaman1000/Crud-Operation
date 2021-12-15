@@ -459,11 +459,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\visha\\source\\repos\\CRUD\\CRUD\\CRUD.csproj",
+      "projectUniqueName": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj",
       "projectName": "CRUD",
-      "projectPath": "C:\\Users\\visha\\source\\repos\\CRUD\\CRUD\\CRUD.csproj",
+      "projectPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj",
       "packagesPath": "C:\\Users\\visha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\visha\\source\\repos\\CRUD\\CRUD\\obj\\",
+      "outputPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\visha\\AppData\\Roaming\\NuGet\\NuGet.Config",

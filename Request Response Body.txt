@@ -1,0 +1,70 @@
+POST : https://localhost:44353/api/CrudApplication/CreateInformation
+
+Request Body :
+{
+	"userName":"Aparna",
+	"age":22
+}
+
+Response Body :
+{
+    "isSuccess": true,
+    "message": "Successful"
+}
+
+=================================================================
+
+GET : https://localhost:44353/api/CrudApplication/ReadInformation
+
+Request Body :
+
+Response Body :
+{
+    "isSuccess": true,
+    "message": "Successful",
+    "readInformation": [
+        {
+            "userID": 2,
+            "userName": "Vishal",
+            "age": 24
+        },
+        {
+            "userID": 3,
+            "userName": "Aparna Waman",
+            "age": 25
+        }
+    ]
+}
+
+==================================================================
+
+PUT : https://localhost:44353/api/CrudApplication/UpdateInformation
+
+Request Body :
+{
+"userId":3,
+"userName":"Aparna Waman",
+"age":25
+}
+
+Response Body :
+{
+    "isSuccess": true,
+    "message": "Successful"
+}
+
+==================================================================
+
+DELETE : https://localhost:44353/api/CrudApplication/DeleteInformation
+
+Request Body :
+{
+	"userId" : 4
+}
+
+Response Body :
+{
+    "isSuccess": true,
+    "message": "User Not Found",
+    "deleteInformation": null
+}

@@ -17,7 +17,7 @@ namespace CRUD.RepositoryLayer
         public CrudAppliactionRL(IConfiguration configuration)
         {
             _configuration = configuration;
-            _sqlConnection = new SqlConnection( _configuration["ConnectionStrings:DBConnection"]);
+            _sqlConnection = new SqlConnection( _configuration["ConnectionStrings:SqlServerDBConnection"]);
         }
 
         public async Task<CreateInformationResponse> CreateInformation(CreateInformationRequest request)
