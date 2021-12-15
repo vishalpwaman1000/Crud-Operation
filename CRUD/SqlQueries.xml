@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SqlQueries>
+	<CreateInformationQuery>
+		<![CDATA[
+			insert into CrudOperationTable (UserName , Age) values (@UserName, @Age);
+		]]>
+	</CreateInformationQuery>
+	<ReadInformation>
+		<![CDATA[
+		SELECT *
+		FROM CrudOperationTable;
+		]]>
+	</ReadInformation>
+	<UpdateInformation>
+		<![CDATA[
+		Update CrudOperationTable
+		set UserName=@UserName , Age=@Age
+		where Id=@UserId;
+		]]>
+	</UpdateInformation>
+</SqlQueries>
