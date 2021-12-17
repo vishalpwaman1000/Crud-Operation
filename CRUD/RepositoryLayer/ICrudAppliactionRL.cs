@@ -12,6 +12,7 @@ namespace CRUD.RepositoryLayer
         public Task<ReadInformationResponse> ReadInformation();
         public Task<UpdateInformationResponse> UpdateInformation(UpdateInformationRequest request);
         public Task<DeleteInformationResponse> DeleteInformation(DeleteInformationRequest request);
+        public Task<SearchInformationByIdResponse> SearchInformationById(SearchInformationByIdRequest request);
 
     }
 }

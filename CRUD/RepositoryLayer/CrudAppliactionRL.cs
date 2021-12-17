@@ -220,5 +220,54 @@ namespace CRUD.RepositoryLayer
             return resposne;
         }
 
+        public async Task<SearchInformationByIdResponse> SearchInformationById(SearchInformationByIdRequest request)
+        {
+            SearchInformationByIdResponse response = new SearchInformationByIdResponse();
+            response.IsSuccess = true;
+            response.Message = "Successful";
+            try
+            {
+                using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.SearchInformationById, _mySqlConnection))
+                //using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.ReadInformation,_sqlConnection))
+                {
+                    sqlCommand.CommandType = System.Data.CommandType.Text;
+                    sqlCommand.CommandTimeout = ConnectionTimeOut;
+                    sqlCommand.Parameters.AddWithValue("@UserId", request.UserId);
+                    await _mySqlConnection.OpenAsync();
+                    //await _sqlConnection.OpenAsync();
+                    using (DbDataReader _sqlDataReader = await sqlCommand.ExecuteReaderAsync())
+                    //using(SqlDataReader _sqlDataReader = await sqlCommand.ExecuteReaderAsync())
+                    {
+                        if (_sqlDataReader.HasRows)
+                        {
+                            await _sqlDataReader.ReadAsync();
+                            response.searchInformationById = new SearchInformationById();
+                            response.searchInformationById.UserName = _sqlDataReader["UserName"] != DBNull.Value ? _sqlDataReader["UserName"].ToString() : string.Empty;
+                            response.searchInformationById.Age = _sqlDataReader["Age"] != DBNull.Value ? Convert.ToInt32(_sqlDataReader["Age"]) : 0;
+
+
+                        }
+                        else
+                        {
+                            response.Message = "No data Found";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = "Exception Message : " + ex.Message;
+            }
+            finally
+            {
+                await _mySqlConnection.CloseAsync();
+                await _mySqlConnection.DisposeAsync();
+                //await _sqlConnection.CloseAsync();
+                //await _sqlConnection.DisposeAsync();
+            }
+
+            return response;
+        }
     }
 }

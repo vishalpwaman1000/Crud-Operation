@@ -18,4 +18,11 @@
 		where Id=@UserId;
 		]]>
 	</UpdateInformation>
+	<SearchInformationById>
+		<![CDATA[
+		SELECT *
+		FROM CrudOperationTable
+		WHERE Id=@UserId;
+		]]>
+	</SearchInformationById>
 </SqlQueries>

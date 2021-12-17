@@ -36,5 +36,10 @@ namespace CRUD.ServiceLayer
         {
             return await _crudAppliactionRL.DeleteInformation(request);
         }
+
+        public async Task<SearchInformationByIdResponse> SearchInformationById(SearchInformationByIdRequest request)
+        {
+            return await _crudAppliactionRL.SearchInformationById(request);
+        }
     }
 }

@@ -58,3 +58,8 @@ C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\obj\Debug\netcoreapp3.1\CRU
 C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\obj\Debug\netcoreapp3.1\CRUD.dll
 C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\obj\Debug\netcoreapp3.1\CRUD.pdb
 C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\obj\Debug\netcoreapp3.1\CRUD.genruntimeconfig.cache
+C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\obj\Debug\netcoreapp3.1\CRUD.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\visha\source\repos\CRUD\Crud-Operation\CRUD\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll

@@ -79,7 +79,7 @@ namespace CRUD.Controllers
             return Ok(response);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteInformation")]
         public async Task<IActionResult> DeleteInformation(DeleteInformationRequest request)
         {
@@ -99,5 +99,24 @@ namespace CRUD.Controllers
             return Ok(response);
         }
 
+        [HttpPost]
+        [Route("SearchInformationById")]
+        public async Task<IActionResult> SearchInformationById(SearchInformationByIdRequest request)
+        {
+            SearchInformationByIdResponse response = null;
+            try
+            {
+
+                response = await _crudApplicationSL.SearchInformationById(request);
+
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = "Exception Message : " + ex.Message;
+            }
+
+            return Ok(response);
+        }
     }
 }
