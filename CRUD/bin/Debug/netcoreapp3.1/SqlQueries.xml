@@ -25,4 +25,9 @@
 		WHERE Id=@UserId;
 		]]>
 	</SearchInformationById>
+	<DeleteInformation>
+		<![CDATA[
+			DELETE FROM CrudOperationTable WHERE Id=@UserId;
+		]]>
+	</DeleteInformation>
 </SqlQueries>

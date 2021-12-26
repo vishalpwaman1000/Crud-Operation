@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wwkwaGWqT4X3xHQXuHqfcGHiqZBbJuFh9ASk05OLBQLil6os0WjlWwDZouhyabRlkHcIfk4ReoRv5cz9YHVKdg==",
+  "dgSpecHash": "xIYXEJoJOAO1YL7IqAcoXfLE8Xdia9GogtypfIT/y7YiCBn0jxEx9CnEq3DTEC2PkMjWd0fOG3hN70Gg5R7r2w==",
   "success": true,
   "projectFilePath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj",
   "expectedPackageFiles": [
@@ -36,8 +36,7 @@
     "C:\\Users\\visha\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
     "C:\\Users\\visha\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\visha\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
-    "C:\\Users\\visha\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
-    "C:\\Users\\visha\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+    "C:\\Users\\visha\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

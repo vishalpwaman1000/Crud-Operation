@@ -17,5 +17,6 @@ namespace CRUD.CommonUtility
         public static string ReadInformation { get { return _sqlQueryConfiguration["ReadInformation"]; } }
         public static string UpdateInformation { get { return _sqlQueryConfiguration["UpdateInformation"]; } }
         public static string SearchInformationById { get { return _sqlQueryConfiguration["SearchInformationById"]; } }//
+        public static string DeleteInformation { get { return _sqlQueryConfiguration["DeleteInformation"]; } }
     }
 }
