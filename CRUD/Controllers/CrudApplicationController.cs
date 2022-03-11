@@ -1,18 +1,22 @@
 ﻿using CRUD.CommonLayer.Models;
 using CRUD.ServiceLayer;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CRUD.Controllers
 {
     [Route("api/[controller]/[Action]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)] //Jwt
+    //[Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)] //Jwt
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]  //Cookies
     public class CrudApplicationController : ControllerBase
     {
         public readonly ICrudAppliactionSL _crudApplicationSL;
@@ -53,6 +57,23 @@ namespace CRUD.Controllers
             {
 
                 response = await _crudApplicationSL.UserLogin(request);
+                if (response.IsSuccess)
+                {
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Email, response.data.UserName),
+                        new Claim(ClaimTypes.PrimarySid, response.data.UserId.ToString()),
+                        new Claim(ClaimTypes.Role, response.data.Role),
+                        new Claim("Roles", response.data.Role)
+                    };
+
+                    var claimsIdentity = new ClaimsIdentity(
+                        claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                    await HttpContext.SignInAsync(
+                        CookieAuthenticationDefaults.AuthenticationScheme,
+                        new ClaimsPrincipal(claimsIdentity));
+                }
 
             }
             catch (Exception ex)
