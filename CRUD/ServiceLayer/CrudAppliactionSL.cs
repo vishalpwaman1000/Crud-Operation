@@ -15,6 +15,16 @@ namespace CRUD.ServiceLayer
             _crudAppliactionRL = crudAppliactionRL;
         }
 
+        public async Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request)
+        {
+            return await _crudAppliactionRL.RegisterUser(request);
+        }
+
+        public async Task<UserLoginResponse> UserLogin(UserLoginRequest request)
+        {
+            return await _crudAppliactionRL.UserLogin(request);
+        }
+
         public async Task<CreateInformationResponse> CreateInformation(CreateInformationRequest request)
         {
 
@@ -41,5 +51,7 @@ namespace CRUD.ServiceLayer
         {
             return await _crudAppliactionRL.SearchInformationById(request);
         }
+
+        
     }
 }

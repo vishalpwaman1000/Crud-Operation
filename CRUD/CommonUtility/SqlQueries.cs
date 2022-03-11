@@ -13,6 +13,8 @@ namespace CRUD.CommonUtility
             .AddXmlFile("SqlQueries.xml", true, true)
             .Build();
 
+        public static string RegisterUser { get { return _sqlQueryConfiguration["RegisterUser"]; } }
+        public static string UserLogin { get { return _sqlQueryConfiguration["UserLogin"]; } }
         public static string CreateInformationQuery { get { return _sqlQueryConfiguration["CreateInformationQuery"]; } }
         public static string ReadInformation { get { return _sqlQueryConfiguration["ReadInformation"]; } }
         public static string UpdateInformation { get { return _sqlQueryConfiguration["UpdateInformation"]; } }

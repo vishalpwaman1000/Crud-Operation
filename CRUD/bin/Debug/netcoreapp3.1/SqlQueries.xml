@@ -1,5 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <SqlQueries>
+	<RegisterUser>
+		<![CDATA[
+		INSERT INTO UserDetail (UserName, Password, Role)
+		VALUES (@UserName, @Password, @Role);
+		]]>
+	</RegisterUser>
+	<UserLogin>
+		<![CDATA[
+		SELECT	UserId,
+				UserName,
+				Role 
+		FROM UserDetail
+		Where UserName=@UserName AND 
+		      Password=@Password;
+		]]>
+	</UserLogin>
 	<CreateInformationQuery>
 		<![CDATA[
 			insert into CrudOperationTable (UserName , Age) values (@UserName, @Age);

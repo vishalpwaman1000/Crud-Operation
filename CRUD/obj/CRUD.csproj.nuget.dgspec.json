@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj": {}
+    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud_Operation_Authentication\\CRUD\\CRUD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj": {
+    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud_Operation_Authentication\\CRUD\\CRUD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj",
+        "projectUniqueName": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud_Operation_Authentication\\CRUD\\CRUD.csproj",
         "projectName": "CRUD",
-        "projectPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj",
+        "projectPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud_Operation_Authentication\\CRUD\\CRUD.csproj",
         "packagesPath": "C:\\Users\\visha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\obj\\",
+        "outputPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud_Operation_Authentication\\CRUD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\visha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,9 +40,17 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.16.0, )"
             },
             "MySqlConnector": {
               "target": "Package",
@@ -55,6 +63,10 @@
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.16.0, )"
             }
           },
           "imports": [
@@ -75,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }

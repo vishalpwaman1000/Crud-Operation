@@ -8,6 +8,8 @@ namespace CRUD.ServiceLayer
 {
     public interface ICrudAppliactionSL
     {
+        public Task<RegisterUserResponse> RegisterUser(RegisterUserRequest request);
+        public Task<UserLoginResponse> UserLogin(UserLoginRequest request);
         public Task<CreateInformationResponse> CreateInformation(CreateInformationRequest request);
         public Task<ReadInformationResponse> ReadInformation();
         public Task<UpdateInformationResponse> UpdateInformation(UpdateInformationRequest request);

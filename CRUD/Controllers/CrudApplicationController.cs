@@ -1,5 +1,6 @@
 ﻿using CRUD.CommonLayer.Models;
 using CRUD.ServiceLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace CRUD.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)] //Jwt
     public class CrudApplicationController : ControllerBase
     {
         public readonly ICrudAppliactionSL _crudApplicationSL;
@@ -21,7 +23,50 @@ namespace CRUD.Controllers
         }
 
         [HttpPost]
-        [Route("CreateInformation")]
+        [AllowAnonymous]
+        //[Route("RegisterUser")]
+        public async Task<IActionResult> RegisterUser(RegisterUserRequest request)
+        {
+            RegisterUserResponse response = null;
+            try
+            {
+
+                response = await _crudApplicationSL.RegisterUser(request);
+
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = "Exception Message : " + ex.Message;
+            }
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        //[Route("RegisterUser")]
+        public async Task<IActionResult> UserLogin(UserLoginRequest request)
+        {
+            UserLoginResponse response = null;
+            try
+            {
+
+                response = await _crudApplicationSL.UserLogin(request);
+
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = "Exception Message : " + ex.Message;
+            }
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "User")]
+        //[Route("CreateInformation")]
         public async Task<IActionResult> CreateInformation(CreateInformationRequest request)
         {
             CreateInformationResponse response = null;
@@ -40,7 +85,8 @@ namespace CRUD.Controllers
         }
 
         [HttpGet]
-        [Route("ReadInformation")]
+        [Authorize(Roles = "User")]
+        //[Route("ReadInformation")]
         public async Task<IActionResult> ReadInformation()
         {
             ReadInformationResponse response = null;
@@ -60,7 +106,8 @@ namespace CRUD.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateInformation")]
+        [Authorize(Roles = "User")]
+        //[Route("UpdateInformation")]
         public async Task<IActionResult> UpdateInformation(UpdateInformationRequest request)
         {
             UpdateInformationResponse response = null;
@@ -80,7 +127,8 @@ namespace CRUD.Controllers
         }
 
         [HttpPost]
-        [Route("DeleteInformation")]
+        [Authorize(Roles = "User")]
+        //[Route("DeleteInformation")]
         public async Task<IActionResult> DeleteInformation(DeleteInformationRequest request)
         {
             DeleteInformationResponse response = null;
@@ -100,7 +148,8 @@ namespace CRUD.Controllers
         }
 
         [HttpPost]
-        [Route("SearchInformationById")]
+        [Authorize(Roles = "User")]
+        //[Route("SearchInformationById")]
         public async Task<IActionResult> SearchInformationById(SearchInformationByIdRequest request)
         {
             SearchInformationByIdResponse response = null;
