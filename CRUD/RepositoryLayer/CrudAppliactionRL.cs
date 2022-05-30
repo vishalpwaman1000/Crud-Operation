@@ -20,7 +20,7 @@ namespace CRUD.RepositoryLayer
         {
             _configuration = configuration;
             _sqlConnection = new SqlConnection(_configuration["ConnectionStrings:SqlServerDBConnection"]);
-            _mySqlConnection = new MySqlConnection(_configuration["ConnectionStrings:MySqlDBConnection"]);
+            //_mySqlConnection = new MySqlConnection(_configuration["ConnectionStrings:MySqlDBConnection"]);
         }
 
         public async Task<CreateInformationResponse> CreateInformation(CreateInformationRequest request)
@@ -34,7 +34,7 @@ namespace CRUD.RepositoryLayer
                 if(_sqlConnection != null)
                 {
                     //using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.CreateInformationQuery, _mySqlConnection))
-                    using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.CreateInformationQuery, _sqlConnection))
+                    using (SqlCommand sqlCommand = new SqlCommand(SqlQueriesJson.CreateInformationQuery, _sqlConnection))
                     {
                         sqlCommand.CommandType = System.Data.CommandType.Text;
                         sqlCommand.CommandTimeout = ConnectionTimeOut;

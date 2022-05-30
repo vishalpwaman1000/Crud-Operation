@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj": {}
+    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\Crud-Operation\\CRUD\\CRUD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj": {
+    "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\Crud-Operation\\CRUD\\CRUD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj",
+        "projectUniqueName": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\Crud-Operation\\CRUD\\CRUD.csproj",
         "projectName": "CRUD",
-        "projectPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\CRUD.csproj",
+        "projectPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\Crud-Operation\\CRUD\\CRUD.csproj",
         "packagesPath": "C:\\Users\\visha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\CRUD\\obj\\",
+        "outputPath": "C:\\Users\\visha\\source\\repos\\CRUD\\Crud-Operation\\Crud-Operation\\CRUD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\visha\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -75,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }
