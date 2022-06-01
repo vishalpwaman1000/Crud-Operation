@@ -33,10 +33,11 @@ namespace CRUD.RepositoryLayer
                 //if (_mySqlConnection != null)
                 if(_sqlConnection != null)
                 {
+                    string StoreProcedure = "SpCreateInformation";
                     //using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.CreateInformationQuery, _mySqlConnection))
-                    using (SqlCommand sqlCommand = new SqlCommand(SqlQueriesJson.CreateInformationQuery, _sqlConnection))
+                    using (SqlCommand sqlCommand = new SqlCommand(StoreProcedure, _sqlConnection))
                     {
-                        sqlCommand.CommandType = System.Data.CommandType.Text;
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                         sqlCommand.CommandTimeout = ConnectionTimeOut;
                         sqlCommand.Parameters.AddWithValue("@UserName", request.UserName);
                         sqlCommand.Parameters.AddWithValue("@Age", request.Age);
@@ -76,10 +77,11 @@ namespace CRUD.RepositoryLayer
             response.Message = "Successful";
             try
             {
+                string StoreProcedure = "SpReadInformation";
                 //using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.ReadInformation, _mySqlConnection))
-                using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.ReadInformation,_sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand(StoreProcedure, _sqlConnection))
                 {
-                    sqlCommand.CommandType = System.Data.CommandType.Text;
+                    sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                     sqlCommand.CommandTimeout = ConnectionTimeOut;
                     //await _mySqlConnection.OpenAsync();
                     await _sqlConnection.OpenAsync();
@@ -129,12 +131,13 @@ namespace CRUD.RepositoryLayer
             {
                 if (_sqlConnection != null)
                 {
+                    string StoreProcedure = "SpUpdateInformation";
                     //using (MySqlCommand sqlCommand = new MySqlCommand(SqlQueries.UpdateInformation, _mySqlConnection))
-                    using (SqlCommand sqlCommand = new SqlCommand(SqlQueries.UpdateInformation, _sqlConnection))
+                    using (SqlCommand sqlCommand = new SqlCommand(StoreProcedure, _sqlConnection))
                     {
-                        sqlCommand.CommandType = System.Data.CommandType.Text;
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                         sqlCommand.CommandTimeout = ConnectionTimeOut;
-                        sqlCommand.Parameters.AddWithValue("@UserId", request.UserId);
+                        sqlCommand.Parameters.AddWithValue("@Id", request.UserId);
                         sqlCommand.Parameters.AddWithValue("@UserName", request.UserName);
                         sqlCommand.Parameters.AddWithValue("@Age", request.Age);
                         //await _mySqlConnection.OpenAsync();
@@ -174,15 +177,15 @@ namespace CRUD.RepositoryLayer
             {
                 if (_sqlConnection != null)
                 {
-                    string StoreProcedure = "SP_DeleteInformation";
-                    string SqlQuery = SqlQueries.DeleteInformation;
+                    string StoreProcedure = "SpDeleteInformation";
+                    //string SqlQuery = SqlQueries.DeleteInformation;
                     //using (MySqlCommand sqlCommand = new MySqlCommand(StoreProcedure, _mySqlConnection))
-                    using (SqlCommand sqlCommand = new SqlCommand(SqlQuery, _sqlConnection))
+                    using (SqlCommand sqlCommand = new SqlCommand(StoreProcedure, _sqlConnection))
                     {
-                        sqlCommand.CommandType = System.Data.CommandType.Text;
+                        sqlCommand.CommandType = System.Data.CommandType.StoredProcedure;
                         sqlCommand.CommandTimeout = ConnectionTimeOut;
                         //sqlCommand.Parameters.AddWithValue("?UserId", request.UserId);
-                        sqlCommand.Parameters.AddWithValue("@UserId", request.UserId);
+                        sqlCommand.Parameters.AddWithValue("@Id", request.UserId);
                         //await _mySqlConnection.OpenAsync();
                         await _sqlConnection.OpenAsync();
                         int Status = await sqlCommand.ExecuteNonQueryAsync();

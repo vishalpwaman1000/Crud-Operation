@@ -1,0 +1,9 @@
+{
+  "Queries": {
+    "CreateInformation": "INSERT INTO CrudOperationTable (UserName , Age) VALUES (@UserName, @Age);",
+    "ReadInformation": "SELECT * FROM CrudOperationTable;",
+    "UpdateInformation": "UPDATE CrudOperationTable SET UserName=@UserName , Age=@Age WHERE Id=@UserId;",
+    "SearchInformationById": "SELECT * FROM CrudOperationTable WHERE Id=@UserId;",
+    "DeleteInformation": "DELETE FROM CrudOperationTable WHERE Id=@UserId;"
+  }
+}
